@@ -26,11 +26,12 @@ public class Main {
 				break;
 
 			case 2: //listar todas as tarefas
-				imprimeTarefa();
+				listaTarefa();
+				
 				break;
 
 			case 3:
-				buscaTarefa();
+				
 				break;
 			
 			case 4:
@@ -58,8 +59,7 @@ public class Main {
 			if (bd.buscar(posicao) != null) {
 				Tarefa tmp = bd.buscar(posicao);
 				String stat = (tmp.isStatus()) ? "CONCLUIDA" : "PENDENTE";
-				
-				System.out.println("["+posicao+"]" + " Tarefa: " + tmp.getDescricao().toUpperCase()
+				System.out.println("\n["+posicao+"]" + " Tarefa: " + tmp.getDescricao().toUpperCase()
 						+"\nDATA LIMITE: XX/XX/XXXX"  + "\nTAREFA " + stat);
 				//tmp.processaDadosData(tmp.getData()) TODO print DATA
 				
@@ -67,15 +67,41 @@ public class Main {
 		}
 	}
 
-	private static void buscaTarefa() {
+	private static void listaTarefa() {
 		do {
-			System.out.println("\n## Buscar Contato ##");
-			System.out.println(":1: Buscar por NOME :");
-			System.out.println(":2: Buscar por TELEFONE :");
-
-			System.out.println(":3: Voltar ao menu :\n");
+			exibe.menuTarefas();
 			int opcao = selecionaMenu();
 			if (opcao == 1) {
+				System.out.println("====== TODAS AS TAREFAS ====");
+				imprimeTarefa();
+				System.out.println("\n====== FIM DAS TAREFAS ====");
+			}	
+			
+			if (opcao == 2) {
+				System.out.println("====== TAREFAS PENDENTES ====");
+				for (int posicao = 0; posicao < bd.tarefas.length; posicao++) {
+					if (bd.buscar(posicao) != null) {
+						Tarefa tmp = bd.buscar(posicao);
+						if (!tmp.isStatus()) { 
+							System.out.println("\n["+posicao+"]" + " Tarefa: " + tmp.getDescricao().toUpperCase()
+									+"\nDATA LIMITE: XX/XX/XXXX"  + "\nTAREFA PENDENTE");
+						}
+					}
+				}
+
+			if (opcao == 3) {
+				System.out.println("====== TAREFAS CONCLUIDAS ====");
+				for (int posicao = 0; posicao < bd.tarefas.length; posicao++) {
+					if (bd.buscar(posicao) != null) {
+						Tarefa tmp = bd.buscar(posicao);
+						if (tmp.isStatus()) { 
+							System.out.println("\n["+posicao+"]" + " Tarefa: " + tmp.getDescricao().toUpperCase()
+									+"\nDATA LIMITE: XX/XX/XXXX"  + "\nTAREFA CONCLUIDA");
+						}
+			}}}
+			
+			}
+			if (opcao == 4) {
 				System.out.println("Digite o NOME do contato que voc� est� procurando: ");
 				String nome = sc.nextLine();
 				for (int posicao = 0; posicao < bd.tarefas.length; posicao++) {
@@ -89,21 +115,7 @@ public class Main {
 				}
 				
 			}
-
-			if (opcao == 2) {
-				System.out.println("Concluida? s/n ");
-				String concl = sc.nextLine();
-				for (int posicao = 0; posicao < bd.tarefas.length; posicao++) {
-					if (bd.buscar(posicao) != null) {
-						Tarefa tmp = bd.buscar(posicao);
-						System.out.println(posicao + ": DESCRICAO: " + tmp.getDescricao().toUpperCase() + ", DATA LIMITE " + tmp.getData() + ", CONCLUIDA?: " + tmp.isStatus());
-						}
-					}
-				}
-
-			if (opcao == 3) {
-				break;
-			}
+			
 		} while (true);
 	}
 
