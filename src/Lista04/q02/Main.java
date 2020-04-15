@@ -9,22 +9,26 @@ public class Main {
 
 	static Scanner sc = new Scanner(System.in);
 	static BaseDeDados bd = new BaseDeDados();
-
+	
+	static Gui exibe = new Gui();
+	
+	
 	public static void main(String[] args) {
 
 		do {
-			imprimeMenu();
-			int opcao = coletarOpcaoDesejada();
+			exibe.menuPrincipal();
+			int opcao = selecionaMenu();
 			switch (opcao) {
-			case 1: //adicionar tarefa
+			
+			case 1: //adicionar
 				Tarefa novaTarefa = criarTarefa();
 				bd.adicionar(novaTarefa);
 				break;
 
-			case 2: //remover
+			case 2: //listar todas as tarefas
 				imprimeTarefa();
 				System.out.println("\nVoce deve escolher uma das opcoes para remover");
-				opcao = coletarOpcaoDesejada();
+				opcao = selecionaMenu();
 				bd.remover(opcao); 
 				break;
 
@@ -33,8 +37,13 @@ public class Main {
 				break;
 			
 			case 4:
+				//imprimeTarefa();
+				//alteraTarefa();
+				
 				imprimeTarefa();
-				alteraTarefa();
+				System.out.println("\nVoce deve escolher uma das opcoes para remover");
+				opcao = selecionaMenu();
+				bd.remover(opcao); 
 				
 				break;
 
@@ -66,7 +75,7 @@ public class Main {
 			System.out.println(":2: Buscar por TELEFONE :");
 
 			System.out.println(":3: Voltar ao menu :\n");
-			int opcao = coletarOpcaoDesejada();
+			int opcao = selecionaMenu();
 			if (opcao == 1) {
 				System.out.println("Digite o NOME do contato que voc� est� procurando: ");
 				String nome = sc.nextLine();
@@ -102,7 +111,7 @@ public class Main {
 	
 	private static void alteraTarefa() {
 		System.out.println("Qual Tarefa voce deseja alterar? ");
-		int posicaofinal = coletarOpcaoDesejada();		
+		int posicaofinal = selecionaMenu();		
 		
 		do {
 			System.out.println("================================");
@@ -115,7 +124,7 @@ public class Main {
 			System.out.println(":2: Altera DATA :");
 			System.out.println(":3: Altera STATUS :\n");
 			System.out.println(":4: Voltar ao menu principal. :\n");
-			int opcao = coletarOpcaoDesejada();
+			int opcao = selecionaMenu();
 			if (opcao == 1) {
 				System.out.println("Digite a nova descricao: ");
 				String desc = sc.nextLine();
@@ -133,20 +142,7 @@ public class Main {
 				}while(true);
 			}
 	
-	private static void imprimeMenu() {
-		System.out.println("\n::: Tarefas ToDo :::");
-		System.out.println(":::- Menu -:::");
-		System.out.println(":1: Adicionar nova tarefa : ");
-		System.out.println(":2: Excluir tarefa  :");
-		System.out.println(":3: Buscar tarefa: ");
-		System.out.println(":4: Alterar status da tarefa :");
-		System.out.println(":0: Sair do programa :");
-	}
 	
-	private static int coletarOpcaoDesejada() {
-		System.out.print("Digite a sua opcao:");
-		return Integer.valueOf(sc.nextLine());
-	}
 
 	
 	/*
@@ -184,6 +180,15 @@ public class Main {
 		
 		
 		return data;// data[0] == 20; data[1] == 04; data[2] = 2020;
+	}
+	
+	
+	/*
+	 * Menu Selection
+	 */
+	private static int selecionaMenu() {
+		System.out.print("Digite a sua opcao:");
+		return Integer.valueOf(sc.nextLine());
 	}
 	
 }
