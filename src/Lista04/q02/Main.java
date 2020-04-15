@@ -1,8 +1,6 @@
 package Lista04.q02;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -130,7 +128,7 @@ public class Main {
 		String descricao = sc.nextLine();
 		System.out.print("Digite a data prevista p/ enc. tarefa (dd/mm/aaaa): ");
 		String dadosData = sc.nextLine();
-		int[] dadosConvertidos = processaDadosData(dadosData);
+		int[] dadosConvertidos = processaDadosData(dadosData);// @TODO ajustar mês. 
 		GregorianCalendar data = new GregorianCalendar(dadosConvertidos[2], dadosConvertidos[1]-1, dadosConvertidos[0]); 
 		//Possível BUG >>> Mês + 1 (?);
 

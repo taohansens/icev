@@ -22,10 +22,7 @@ public class Tarefa {
 	public void setData(GregorianCalendar data) {
 		this.data = data;
 	}
-	
 
-	
-	
 	public boolean isStatus() {
 		return status;
 	}
