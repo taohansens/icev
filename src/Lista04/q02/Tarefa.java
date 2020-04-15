@@ -23,6 +23,8 @@ public class Tarefa {
 		this.data = data;
 	}
 	
+
+	
 	
 	public boolean isStatus() {
 		return status;
