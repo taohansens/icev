@@ -37,7 +37,7 @@ public class BaseDeDados {
 		tarefas[posicao].setDescricao(novaDescricao);
 	}
 
-	void alteraStatus(int posicao, String novoEndereco) {
+	void alteraStatus(int posicao) {
 		boolean atual = tarefas[posicao].isStatus();
 		tarefas[posicao].setStatus(!atual);
 	}
