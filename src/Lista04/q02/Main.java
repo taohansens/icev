@@ -27,9 +27,6 @@ public class Main {
 
 			case 2: //listar todas as tarefas
 				imprimeTarefa();
-				System.out.println("\nVoce deve escolher uma das opcoes para remover");
-				opcao = selecionaMenu();
-				bd.remover(opcao); 
 				break;
 
 			case 3:
@@ -60,8 +57,10 @@ public class Main {
 		for (int posicao = 0; posicao < bd.tarefas.length; posicao++) {
 			if (bd.buscar(posicao) != null) {
 				Tarefa tmp = bd.buscar(posicao);
-				System.out.println(
-						posicao + ": DESCRICAO: " + tmp.getDescricao().toUpperCase() + ", DATA LIMITE "  + ", CONCLUIDA?: " + tmp.isStatus());
+				String stat = (tmp.isStatus()) ? "CONCLUIDA" : "PENDENTE";
+				
+				System.out.println("["+posicao+"]" + " Tarefa: " + tmp.getDescricao().toUpperCase()
+						+"\nDATA LIMITE: XX/XX/XXXX"  + "\nTAREFA " + stat);
 				//tmp.processaDadosData(tmp.getData()) TODO print DATA
 				
 			}
