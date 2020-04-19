@@ -1,24 +1,49 @@
 package Lista04.q03;
 
 public class Agencia {
-	int agencia;
+	String nomeAgencia;
+	int numeroAgencia;
+	int numContas;
+	Agencia[][] agencias;
+	int numAgencias;
+	
 
 	/**
-	 * @return the agencia
+	 * @param nomeAgencia
+	 * @param numeroAgencia
 	 */
-
-	/**
-	 * @param agencia the agencia to set
-	 */
-	public void setAgencia(int agencia) {
-		this.agencia = agencia;
+	public Agencia(String nomeAgencia, int numeroAgencia) {
+		this.nomeAgencia = nomeAgencia;
+		this.numeroAgencia = numeroAgencia;
 	}
 
-	/**
-	 * @param agencia
-	 */
-	public Agencia(int agencia) {
-		this.agencia = agencia;
+	public Agencia() {
+		agencias = new Agencia[100][100];
+		numAgencias = 0;
+		numContas = 0;
 	}
 	
-}
+	void criarAgencia(Agencia novaAgencia) {
+	agencias[numAgencias][numContas] = novaAgencia;
+	numAgencias++;
+		}	
+	
+	Agencia[] buscar(int posicao) {
+		return agencias[posicao];
+	}
+	
+	
+	Agencia[] buscar(String nome) {
+		// TODO buscar
+		for (int posicao = 0; posicao < agencias.length; posicao++) {
+			Agencia[] agenciaPosicaoAtual = agencias[posicao];
+			if (agenciaPosicaoAtual == null)
+				continue;
+			//else if (agenciaPosicaoAtual.equals(nome)) {
+				return agenciaPosicaoAtual;
+			}
+		return null;
+	}
+	
+
+	}
