@@ -1,15 +1,11 @@
 package Lista04.q03;
 
-import Lista04.q01.BaseDeDados;
-import Lista04.q01.Contato;
-import Lista04.q02.Tarefa;
 
 public class Principal {
-
+	static BasedeDados Banco = new BasedeDados();
+	
 	public static void main(String[] args) {
 		
-		Agencia age = new Agencia();
-		/*
 		//Construtor (titular, agencia, numero, dataDeAbertura)
 		Conta c1 = new Conta("Alfredo", "1584", 17548, "18/04/2020");
 		Conta c2 = new Conta("Baltazar", "1582", 10015, "18/04/2020");
@@ -37,26 +33,31 @@ public class Principal {
 		//E tudo ficou assim:
 		System.out.println("\n"+c1.recuperaDadosParaImpressao());
 		System.out.println("\n"+c2.recuperaDadosParaImpressao());
-		System.out.println("\n"+c3.recuperaDadosParaImpressao());	
-		*/
-		
-		//Criar agência
-		Agencia a1 = new Agencia("Alameda", 001);
-		age.criarAgencia(a1);
-		
-
-		
-		private static void imprimeAgencia() {
-			for (int posicao = 0; posicao < age.agencia; posicao++) {
-				if (bd.buscar(posicao) != null) {
-					Tarefa tmp = bd.buscar(posicao);
-					String stat = (tmp.isStatus()) ? "CONCLUIDA" : "PENDENTE";
-					System.out.println("\n[" + posicao + "]" + tmp.getDescricao().toUpperCase()
-							+ "\nDATA LIMITE: "+ format(tmp.getData()) + "\nTAREFA " + stat);
-				}
+		System.out.println("\n"+c3.recuperaDadosParaImpressao());				
+		System.out.println("############");
+		System.out.println("BD exper");
+		System.out.println("############");
+		Banco.adicionar(c1);
+		Conta tmp=Banco.buscar("Alfredo");
+		System.out.println("TITULAr: " + tmp.getTitular().toUpperCase() + "\nNum Conta: " +  tmp.getAgencia() +"|" +tmp.getNumero());
+	
+		System.out.println("AGENCIA [0]");
+		for (int i = 0; i < Banco.contas.length; i++) {
+			System.out.println(Banco.contas[0][i].getAgencia());
+			//for (int j = 0; j < Banco.contas.length; j++) {
+				
 			}
 		}
-		
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
-}
+

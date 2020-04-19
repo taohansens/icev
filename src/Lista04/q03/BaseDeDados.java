@@ -1,50 +1,39 @@
 package Lista04.q03;
 
-public class BaseDeDados {
-
-	Conta[] contas;
-	int numContas;
-
-	public BaseDeDados() {
-		contas = new Conta[100];
-		numContas = 0;
+public class BasedeDados {
+	Conta[][] contas;
+	int numAgencia;
+	int numConta;
+	
+	public BasedeDados() {
+		contas = new Conta[100][100];
+		numAgencia = 0;
+		numConta = 0;
 	}
-
+	
 	void adicionar(Conta novaConta) {
-		// TODO adicionar
-		contas[numContas] = novaConta;
-		numContas++;
+		contas[numAgencia][numConta]=novaConta;
+		numAgencia++;
+		numConta++;
 	}
-
-	Conta buscar(int posicao) {
-		return contas[posicao];
+	
+	Conta buscar(int posicaoAg,int posicaoConta) {
+		return contas[posicaoAg][posicaoConta];
 	}
-
-	Conta buscar(String nome) {
-		// TODO buscar
-		for (int posicao = 0; posicao < contas.length; posicao++) {
-			Conta contatoPosicaoAtual = contas[posicao];
-			if (contatoPosicaoAtual == null)
+	
+	Conta buscar(String titular) {
+		for (int posicaoAge = 0; posicaoAge < contas.length; posicaoAge++) {
+			for (int posicaoConta = 0; posicaoConta < contas.length; posicaoConta++) {
+			Conta contaTemp = contas[posicaoAge][posicaoConta];
+			if (contaTemp == null)
 				continue;
-			else if (contatoPosicaoAtual.getTitular().equals(nome)) {
-				return contatoPosicaoAtual;
+			else if (contaTemp.getTitular().equals(titular)) {
+				return contaTemp;
 			}
 		}
 		return null;
 	}
-
-	void alterarAgencia(int posicao, String novaAgencia) {
-		contas[posicao].setAgencia(novaAgencia);
+		return null;
 	}
-
-	void alterarTelefone(int posicao, String novoTelefone) {
-	//	contas[posicao].(novoTelefone);
-	}
-
-	void fecharConta(int posicao) {
-		// TODO remover
-		contas[posicao] = null;
-		numContas--;
-	}
-
 }
+
