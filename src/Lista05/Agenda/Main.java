@@ -10,7 +10,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-	do {
+		do {
 			exibe.menuPrincipal();
 			int opcao = coletarOpcaoDesejada();
 			switch (opcao) {
@@ -50,64 +50,65 @@ public class Main {
 
 	private static void imprimeContatos() {
 		do {
-		exibe.menuImprimeCon1();
-		int opcao = coletarOpcaoDesejada();
-		if (opcao == 1) {
-		for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
-			if (bd.buscar(posicao) != null) {
-				Pessoa tmp = bd.buscar(posicao);
-				System.out.println("\n("+posicao + ") ----");
-				System.out.println("NOME: " + tmp.getNome());
-				if (tmp.getPfPj()) {
-					System.out.println("TIPO: PESSOA");
-					System.out.println("DOCUMENTO: " + tmp.getRg());
-				} else {
-					System.out.println("TIPO: EMPRESA");
-					System.out.println("CNPJ: " + tmp.getCnpj());
-				}
-				System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
-				System.out.println("TELEFONE: " + tmp.getTelefone());
-				System.out.println("----");
-			}
-		}}
-		if (opcao == 2) {
-			for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
-				if (bd.buscar(posicao) != null) {
-					Pessoa tmp = bd.buscar(posicao);
-					if (tmp.getPfPj()) {
-					System.out.println("\n("+posicao + ") ----");
-					System.out.println("NOME: " + tmp.getNome());
-					System.out.println("DOCUMENTO: " + tmp.getRg());
-					System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
-					System.out.println("TELEFONE: " + tmp.getTelefone());
-					System.out.println("----");
+			exibe.menuImprimeCon1();
+			int opcao = coletarOpcaoDesejada();
+			if (opcao == 1) {
+				for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
+					if (bd.buscar(posicao) != null) {
+						Pessoa tmp = bd.buscar(posicao);
+						System.out.println("\n(" + posicao + ") ----");
+						System.out.println("NOME: " + tmp.getNome());
+						if (tmp.getPfPj()) {
+							System.out.println("TIPO: PESSOA");
+							System.out.println("DOCUMENTO: " + tmp.getRg());
+						} else {
+							System.out.println("TIPO: EMPRESA");
+							System.out.println("CNPJ: " + tmp.getCnpj());
+						}
+						System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
+						System.out.println("TELEFONE: " + tmp.getTelefone());
+						System.out.println("----");
 					}
 				}
 			}
-			
-	}
-		if (opcao == 3) {
-			for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
-				if (bd.buscar(posicao) != null) {
-					Pessoa tmp = bd.buscar(posicao);
-					if (tmp.getPfPj()==false) {
-					System.out.println("\n("+posicao + ") ----");
-					System.out.println("NOME: " + tmp.getNome());
-					System.out.println("CNPJ: " + tmp.getRg());
-					System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
-					System.out.println("TELEFONE: " + tmp.getTelefone());
-					System.out.println("----");
+			if (opcao == 2) {
+				for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
+					if (bd.buscar(posicao) != null) {
+						Pessoa tmp = bd.buscar(posicao);
+						if (tmp.getPfPj()) {
+							System.out.println("\n(" + posicao + ") ----");
+							System.out.println("NOME: " + tmp.getNome());
+							System.out.println("DOCUMENTO: " + tmp.getRg());
+							System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
+							System.out.println("TELEFONE: " + tmp.getTelefone());
+							System.out.println("----");
+						}
 					}
 				}
+
 			}
-			
+			if (opcao == 3) {
+				for (int posicao = 0; posicao < bd.getTotal(); posicao++) {
+					if (bd.buscar(posicao) != null) {
+						Pessoa tmp = bd.buscar(posicao);
+						if (tmp.getPfPj() == false) {
+							System.out.println("\n(" + posicao + ") ----");
+							System.out.println("NOME: " + tmp.getNome());
+							System.out.println("CNPJ: " + tmp.getRg());
+							System.out.println("ENDERECO: " + tmp.getEndereco().toUpperCase());
+							System.out.println("TELEFONE: " + tmp.getTelefone());
+							System.out.println("----");
+						}
+					}
+				}
+
+			}
+			if (opcao == 4) {
+				break;
+			}
+		} while (false);
 	}
-		if (opcao == 4) {
-			break;
-		}
-	} while (false);
-}
-	
+
 	private static void buscaContato() {
 		do {
 			System.out.println("\n## Buscar Contato ##");
@@ -122,7 +123,7 @@ public class Main {
 				Pessoa tmp = bd.buscar(nome);
 				if (tmp != null) {
 					System.out.println("====== NOME " + tmp.getNome().toUpperCase() + " LOCALIZADO ====");
-					if (tmp.getPfPj()== true) {
+					if (tmp.getPfPj() == true) {
 						System.out.println("DOCUMENTO: " + tmp.getRg());
 					} else if (tmp.getPfPj() == false) {
 						System.out.println("CNPJ: " + tmp.getCnpj());
@@ -140,17 +141,18 @@ public class Main {
 				System.out.println("Digite o TELEFONE de quem voce esta procurando: ");
 				String telefone = sc.nextLine();
 				Pessoa tmp = bd.buscar(telefone, 0);
-				if (tmp !=null){
-				if (tmp.getPfPj()== true) {
-					System.out.println("DOCUMENTO: " + tmp.getRg());
-				} else if (tmp.getPfPj() == false) {
-					System.out.println("CNPJ: " + tmp.getCnpj());
-				}
-				System.out.println(
-						"NOME: " + tmp.getNome().toUpperCase() + "\nENDERECO " + tmp.getEndereco().toUpperCase());
-				}else {
+				if (tmp != null) {
+					if (tmp.getPfPj() == true) {
+						System.out.println("DOCUMENTO: " + tmp.getRg());
+					} else if (tmp.getPfPj() == false) {
+						System.out.println("CNPJ: " + tmp.getCnpj());
+					}
+					System.out.println(
+							"NOME: " + tmp.getNome().toUpperCase() + "\nENDERECO " + tmp.getEndereco().toUpperCase());
+				} else {
 					System.out.println("TELEFONE NAO ENCONTRADO.");
-			}}
+				}
+			}
 			if (opcao == 3) {
 				break;
 			}
@@ -165,7 +167,7 @@ public class Main {
 			System.out.println("================================");
 			System.out.println("======Contato Atual======");
 			Pessoa tmp = bd.buscar(posicaofinal);
-			System.out.println("NOME: " + tmp.getNome().toUpperCase() +"| ENDERECO: " + tmp.getEndereco().toUpperCase()
+			System.out.println("NOME: " + tmp.getNome().toUpperCase() + "| ENDERECO: " + tmp.getEndereco().toUpperCase()
 					+ "| TELEFONE: " + tmp.getTelefone().toUpperCase());
 			Gui.menuAlteraContato();
 			int opcao = coletarOpcaoDesejada();
@@ -203,9 +205,9 @@ public class Main {
 		boolean pfOuPj = true;
 		exibe.menuPessoaOuEmpresa();
 		int escolha = coletarOpcaoDesejada();
-		if (escolha==1) {
+		if (escolha == 1) {
 			pfOuPj = true;
-		} else if (escolha==2){
+		} else if (escolha == 2) {
 			pfOuPj = false;
 		}
 		System.out.print("Digite o nome: ");

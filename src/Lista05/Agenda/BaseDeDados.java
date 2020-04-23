@@ -5,13 +5,13 @@ import java.util.*;
 public class BaseDeDados {
 
 	private List<Pessoa> Agenda = new ArrayList<Pessoa>();
-	
+
 	static int numContatos = 0;
 
 	int getTotal() {
 		return Agenda.size();
 	}
-	
+
 	void adicionar(Pessoa p) {
 		Agenda.add(p);
 	}
@@ -30,7 +30,7 @@ public class BaseDeDados {
 		}
 		return null;
 	}
-		
+
 	Pessoa buscar(String telefone, int tel) {
 		for (int i = 0; i < Agenda.size(); i++) {
 			if (Agenda.get(i).getTelefone().equals(telefone.toUpperCase())) {
@@ -45,11 +45,11 @@ public class BaseDeDados {
 	void alterarNomePessoa(int posicaoNaAgenda, String novoNome) {
 		Agenda.get(posicaoNaAgenda).setNome(novoNome);
 	}
-	
+
 	void alterarDocumento(int posicaoNaAgenda, String novoDocumento) {
 		if (Agenda.get(posicaoNaAgenda).getPfPj()) {
-			Agenda.get(posicaoNaAgenda).setRg(novoDocumento);}
-		else {
+			Agenda.get(posicaoNaAgenda).setRg(novoDocumento);
+		} else {
 			Agenda.get(posicaoNaAgenda).setCnpj(novoDocumento);
 		}
 	}
@@ -66,5 +66,3 @@ public class BaseDeDados {
 		Agenda.remove(posicaoNaAgenda);
 	}
 }
-	
-

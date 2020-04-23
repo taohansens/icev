@@ -10,13 +10,13 @@ public class Pessoa {
 	private boolean pfPj; // Estou definindo como true = PF;
 
 	public Pessoa(boolean pfOuPj, String nomePessoa, String documento, String telefone, String endereco) {
-			this.pfPj = pfOuPj;
-			this.nomePessoa = nomePessoa;
-			this.rg = documento;
-			this.cnpj = documento;
-			this.telefone = telefone;
-			this.endereco = endereco;
-		}
+		this.pfPj = pfOuPj;
+		this.nomePessoa = nomePessoa;
+		this.rg = documento;
+		this.cnpj = documento;
+		this.telefone = telefone;
+		this.endereco = endereco;
+	}
 
 	public String getNome() {
 		return nomePessoa;
