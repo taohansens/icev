@@ -1,59 +1,70 @@
 package Lista05.Agenda;
 
+import java.util.*;
+
 public class BaseDeDados {
 
-	Contato[] contatos;
-	int numContatos;
+	private List<Pessoa> Agenda = new ArrayList<Pessoa>();
+	
+	static int numContatos = 0;
 
-	public BaseDeDados() {
-		contatos = new Contato[100];
-		numContatos = 0;
-	}
-
-	void adicionar(PessoaFisica novoContato) {
-		// TODO adicionar
-		contatos[numContatos] = novoContato;
-		numContatos++;
+	int getTotal() {
+		return Agenda.size();
 	}
 	
-	void adicionar(PessoaJuridica novoContato) {
-		// TODO adicionar
-		contatos[numContatos] = novoContato;
-		numContatos++;
+	void adicionar(Pessoa p) {
+		Agenda.add(p);
 	}
 
-	Contato buscar(int posicao) {
-		return contatos[posicao];
+	Pessoa buscar(int posicaoNaAgenda) {
+		return Agenda.get(posicaoNaAgenda);
 	}
 
-	Contato buscar(String nome) {
-		// TODO buscar
-		for (int posicao = 0; posicao < contatos.length; posicao++) {
-			Contato contatoPosicaoAtual = contatos[posicao];
-			if (contatoPosicaoAtual == null)
+	Pessoa buscar(String nome) {
+		for (int i = 0; i < Agenda.size(); i++) {
+			if (Agenda.get(i).getNome().equals(nome)) {
+				return Agenda.get(i);
+			} else {
 				continue;
-			else if (contatoPosicaoAtual.getNome().equals(nome)) {
-				return contatoPosicaoAtual;
+			}
+		}
+		return null;
+	}
+		
+	Pessoa buscar(String telefone, int tel) {
+		for (int i = 0; i < Agenda.size(); i++) {
+			if (Agenda.get(i).getTelefone().equals(telefone.toUpperCase())) {
+				return Agenda.get(i);
+			} else {
+				continue;
 			}
 		}
 		return null;
 	}
 
-	void alterarNome(int posicao, String novoNome) {
-		contatos[posicao].setNome(novoNome);
+	void alterarNomePessoa(int posicaoNaAgenda, String novoNome) {
+		Agenda.get(posicaoNaAgenda).setNome(novoNome);
+	}
+	
+	void alterarDocumento(int posicaoNaAgenda, String novoDocumento) {
+		if (Agenda.get(posicaoNaAgenda).getPfPj()) {
+			Agenda.get(posicaoNaAgenda).setRg(novoDocumento);}
+		else {
+			Agenda.get(posicaoNaAgenda).setCnpj(novoDocumento);
+		}
 	}
 
-	void alterarEndereco(int posicao, String novoEndereco) {
-		contatos[posicao].setEndereco(novoEndereco);
+	void alterarEndereco(int posicaoNaAgenda, String novoEndereco) {
+		Agenda.get(posicaoNaAgenda).setEndereco(novoEndereco);
 	}
 
-	void alterarTelefone(int posicao, String novoTelefone) {
-		contatos[posicao].setTelefone(novoTelefone);
+	void alterarTelefone(int posicaoNaAgenda, String novoTelefone) {
+		Agenda.get(posicaoNaAgenda).setTelefone(novoTelefone);
 	}
 
-	void remover(int posicao) {
-		contatos[posicao] = null;
-		numContatos--;
+	void removerContato(int posicaoNaAgenda) {
+		Agenda.remove(posicaoNaAgenda);
 	}
-
 }
+	
+
