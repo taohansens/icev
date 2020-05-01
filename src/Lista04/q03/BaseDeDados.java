@@ -1,6 +1,6 @@
 package Lista04.q03;
 
-public class BasedeDados {
+class BasedeDados {
 	Conta[][] contas;
 	int numAgencia;
 	int numConta;
