@@ -72,6 +72,7 @@ public class Main {
         return null;
     }
 
+
     private static void buscaContato() {
         do {
             System.out.println("\n------- Buscar Contato -------");
