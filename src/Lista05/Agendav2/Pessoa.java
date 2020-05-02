@@ -1,4 +1,4 @@
-package Lista05.AgendaAbs;
+package Lista05.Agendav2;
 
 abstract class Pessoa {
     private String nome;

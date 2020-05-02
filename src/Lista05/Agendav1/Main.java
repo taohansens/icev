@@ -1,4 +1,4 @@
-package Lista05.Agenda;
+package Lista05.Agendav1;
 
 import java.util.Scanner;
 

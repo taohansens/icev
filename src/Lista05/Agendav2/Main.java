@@ -1,4 +1,4 @@
-package Lista05.AgendaAbs;
+package Lista05.Agendav2;
 
 import java.util.Scanner;
 
@@ -181,7 +181,7 @@ public class Main {
     }
 
     //Remover contatos
-    private static void removerContato(){
+    private static void removerContato() {
         System.out.println("-----------------------");
         System.out.println("\nQual Contato voce deseja remover? \nDigite o numero [x]");
         int posicaofinal = coletarOpcaoMenu();
