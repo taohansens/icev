@@ -6,6 +6,7 @@ public class Main {
 
     static Scanner sc = new Scanner(System.in);
     static Gui exibe = new Gui();
+    static BancoDeDados bd = new BancoDeDados();
 
     public static void main(String[] args) {
         int opcao;
@@ -18,13 +19,25 @@ public class Main {
                 case 0:
                     System.out.println("Desligando...");
                     System.exit(0);
+
+                //Adiciona contato ao banco de dados;
                 case 1:
+                 System.out.println("\n-------ADICIONAR CONTATO -------");
                  Pessoa novoContato = criarContato();
-                 System.out.println(novoContato);
+                 bd.adicionar(novoContato);
                  break;
+
+                case 2:
+                    buscaContato();
+
             }
 
         } while (true);
+
+    }
+
+    private static void buscaContato() {
+
 
     }
 
@@ -33,8 +46,13 @@ public class Main {
         return Integer.parseInt(sc.nextLine());
     }
 
+
+    /*
+     * Metodo para criar objeto e adicionar no ArrayList de BancoDeDados;
+     */
+
     private static Pessoa criarContato() {
-        System.out.println("\nQuem voce deseja adicionar?\n:1: Pessoa Fisica\n:2: Empresa\n ");
+        System.out.println("Quem voce deseja adicionar?\n:1: Pessoa Fisica\n:2: Empresa\n ");
         int escolha = coletarOpcaoMenu();
 
         System.out.print("\nDigite o nome: ");
@@ -47,13 +65,13 @@ public class Main {
         if (escolha == 1){
         System.out.print("Digite o RG: ");
         String rg = sc.nextLine();
-        System.out.println("[OK] Contato Adicionado!");
+        System.out.println("[OK] Contato Adicionado!\n");
         return new PessoaFisica(nome,endereco,telefone,rg);
         }
         if (escolha ==2) {
             System.out.print("Digite o CNPJ: ");
             String cnpj = sc.nextLine();
-            System.out.println("[OK] Contato Adicionado!");
+            System.out.println("[OK] Contato Adicionado!\n");
             return new PessoaJuridica(nome, endereco, telefone, cnpj);
         }
         return null;
