@@ -16,22 +16,21 @@ public class Main {
             exibe.menuPrincipal();
             opcao = coletarOpcaoMenu();
             switch (opcao) {
+                //Encerra o programa.
                 case 0:
                     System.out.println("Desligando...");
                     System.exit(0);
 
-                    //Adiciona contato ao banco de dados;
+                //Adiciona contato ao banco de dados;
                 case 1:
                     System.out.println("\n-------ADICIONAR CONTATO -------");
                     Pessoa novoContato = criarContato();
                     bd.adicionar(novoContato);
                     break;
-
+                    //Busca contato
                 case 2:
                     buscaContato();
-
             }
-
         } while (true);
 
     }
@@ -41,11 +40,7 @@ public class Main {
         return Integer.parseInt(sc.nextLine());
     }
 
-
-    /*
-     * Metodo para criar objeto e adicionar no ArrayList de BancoDeDados;
-     */
-
+    //Adicionar contato no Array do BancoDeDados.
     private static Pessoa criarContato() {
         System.out.println("Quem voce deseja adicionar?\n:1: Pessoa Fisica\n:2: Empresa\n ");
         int escolha = coletarOpcaoMenu();
@@ -72,38 +67,35 @@ public class Main {
         return null;
     }
 
-
+    //Metodo para buscar contato no BancoDeDados.
     private static void buscaContato() {
         do {
             System.out.println("\n------- Buscar Contato -------");
             System.out.println(":1: Buscar por NOME :");
             System.out.println(":2: Buscar por TELEFONE :");
-
             System.out.println(":3: Voltar ao menu :\n");
             int opcao = coletarOpcaoMenu();
+
+            //Buscar contato por nome.
             if (opcao == 1) {
                 System.out.println("Digite o NOME do contato que voce esta procurando: ");
                 String nome = sc.nextLine().toUpperCase();
                 Pessoa tmp = bd.buscar(nome);
                 if (tmp != null) {
-                System.out.println(tmp);
+                    System.out.println(tmp);
                 } else {
                     System.out.println("NOME -" + nome + "- NAO ENCONTRADO.");
                 }
             }
 
+            //Buscar contato por telefone.
             if (opcao == 2) {
                 System.out.println("Digite o TELEFONE de quem voce esta procurando: ");
-                String telefone = sc.nextLine();
-                Pessoa tmp = bd.buscar(telefone);
+                int telefone = sc.nextInt();
+                sc.nextLine();
+                Pessoa tmp = bd.buscar(telefone, 0);
                 if (tmp != null) {
-                    if (tmp.getPfPj() == true) {
-                        System.out.println("DOCUMENTO: " + tmp.getRg());
-                    } else if (tmp.getPfPj() == false) {
-                        System.out.println("CNPJ: " + tmp.getCnpj());
-                    }
-                    System.out.println(
-                            "NOME: " + tmp.getNome().toUpperCase() + "\nENDERECO " + tmp.getEndereco().toUpperCase());
+                    System.out.println(tmp);
                 } else {
                     System.out.println("TELEFONE NAO ENCONTRADO.");
                 }
@@ -113,6 +105,8 @@ public class Main {
             }
         } while (true);
     }
+
+
 
 }
 

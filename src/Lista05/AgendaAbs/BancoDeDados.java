@@ -17,6 +17,11 @@ public class BancoDeDados {
         agendaBd.add(pessoa);
     }
 
+    //Posicao no array.
+    Pessoa buscar(int posicaoNaAgenda) {
+        return agendaBd.get(posicaoNaAgenda);
+    }
+
     //buscar contato por nome.
     Pessoa buscar(String nome) {
         for (Pessoa pessoa : agendaBd) {
