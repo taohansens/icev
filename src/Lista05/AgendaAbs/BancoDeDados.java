@@ -17,5 +17,24 @@ public class BancoDeDados {
         agendaBd.add(pessoa);
     }
 
+    //buscar contato por nome.
+    Pessoa buscar(String nome) {
+        for (Pessoa pessoa : agendaBd) {
+            if (pessoa.getNome().equals(nome)) {
+                return pessoa;
+            }
+        }
+        return null;
+    }
+
+    //buscar contato por telefone.
+    Pessoa buscar(int telefone, int a) {
+        for (Pessoa pessoa : agendaBd) {
+            if (pessoa.getTelefone() == telefone) {
+                return pessoa;
+            }
+        }
+        return null;
+    }
 
 }

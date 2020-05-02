@@ -1,5 +1,7 @@
 package Lista05.AgendaAbs;
 
+import java.util.Objects;
+
 abstract class Pessoa {
     private String nome;
     private String endereco;
@@ -34,6 +36,17 @@ abstract class Pessoa {
     public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pessoa pessoa = (Pessoa) o;
+        return telefone == pessoa.telefone &&
+                nome.equals(pessoa.nome);
+    }
+
 }
 
 class PessoaFisica extends Pessoa {
