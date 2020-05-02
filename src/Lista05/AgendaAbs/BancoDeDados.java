@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BancoDeDados {
 
-    private List<Pessoa> agendaBd = new ArrayList<Pessoa>();
+    private List<Pessoa> agendaBd = new ArrayList<>();
 
 
     //retornar tamanho da agenda.
@@ -42,4 +42,48 @@ public class BancoDeDados {
         return null;
     }
 
+    //mostrar contatos.
+    void imprimeContato() {
+        for (Pessoa pessoa : agendaBd) {
+            System.out.println("\n["+ agendaBd.indexOf(pessoa)+"]");
+            System.out.println(pessoa);
+        }
+    }
+    //mostrar PF
+    void imprimePessoaF() {
+        for (Pessoa pessoa : agendaBd) {
+            if (pessoa instanceof PessoaFisica) {
+                System.out.println("\n["+ agendaBd.indexOf(pessoa)+"]");
+                System.out.println(pessoa);
+            }
+        }
+    }
+    //mostrar PJ
+    void imprimePessoaJ() {
+        for (Pessoa pessoa : agendaBd) {
+            if (pessoa instanceof PessoaJuridica) {
+                System.out.println("\n["+ agendaBd.indexOf(pessoa)+"]");
+                System.out.println(pessoa);
+            }
+        }
+
+    }
+
+    //Alteracoes
+    void alterarNome(int posicaoNaAgenda, String novoNome) {
+        agendaBd.get(posicaoNaAgenda).setNome(novoNome);
+    }
+
+    void alterarEndereco(int posicaoNaAgenda, String novoEndereco) {
+        agendaBd.get(posicaoNaAgenda).setEndereco(novoEndereco);
+    }
+
+    void alterarTelefone(int posicaoNaAgenda, int novoTelefone) {
+        agendaBd.get(posicaoNaAgenda).setTelefone(novoTelefone);
+    }
+
+    void removerContato(int posicaoNaAgenda) {
+        agendaBd.remove(posicaoNaAgenda);
+    }
 }
+

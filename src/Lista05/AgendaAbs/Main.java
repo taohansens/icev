@@ -21,15 +21,29 @@ public class Main {
                     System.out.println("Desligando...");
                     System.exit(0);
 
-                //Adiciona contato ao banco de dados;
+                    //Adiciona contato ao banco de dados;
                 case 1:
                     System.out.println("\n-------ADICIONAR CONTATO -------");
                     Pessoa novoContato = criarContato();
                     bd.adicionar(novoContato);
                     break;
-                    //Busca contato
+                //Buscar contato.
                 case 2:
                     buscaContato();
+                    break;
+
+                //Mostra contatos.
+                case 3:
+                    mostraContato();
+                    break;
+                case 4:
+                    mostraContato();
+                    alteraContato();
+                    break;
+                case 5:
+                    mostraContato();
+                    removerContato();
+                    break;
             }
         } while (true);
 
@@ -51,7 +65,7 @@ public class Main {
         int telefone = sc.nextInt();
         sc.nextLine();
         System.out.print("Digite o endereco: ");
-        String endereco = sc.nextLine();
+        String endereco = sc.nextLine().toUpperCase();
         if (escolha == 1) {
             System.out.print("Digite o RG: ");
             String rg = sc.nextLine();
@@ -67,7 +81,7 @@ public class Main {
         return null;
     }
 
-    //Metodo para buscar contato no BancoDeDados.
+    //Buscar contatos
     private static void buscaContato() {
         do {
             System.out.println("\n------- Buscar Contato -------");
@@ -106,7 +120,74 @@ public class Main {
         } while (true);
     }
 
+    //Mostrar contatos
+    private static void mostraContato() {
+        do {
+            exibe.menuMostraCon();
+            int opcao = coletarOpcaoMenu();
+            if (opcao == 1) {
+                bd.imprimeContato();
+            }
 
+            if (opcao == 2) {
+                bd.imprimePessoaF();
+            }
+
+            if (opcao == 3) {
+                bd.imprimePessoaJ();
+
+            }
+            if (opcao == 4) {
+                break;
+            }
+        } while (false);
+    }
+
+    //Alterar contatos
+    private static void alteraContato() {
+        System.out.println("-----------------------");
+        System.out.println("\nQual Contato voce deseja alterar? \nDigite o numero [x]");
+        int posicaofinal = coletarOpcaoMenu();
+
+        do {
+            System.out.println("\n------ Contato a ser editado ------");
+            Pessoa tmp = bd.buscar(posicaofinal);
+            System.out.println(tmp);
+
+            Gui.menuAlteraContato();
+            int opcao = coletarOpcaoMenu();
+
+            if (opcao == 1) {
+                System.out.println("\nDigite o novo NOME: ");
+                String nome = sc.nextLine().toUpperCase();
+                bd.alterarNome(posicaofinal, nome);
+            }
+            if (opcao == 2) {
+                System.out.println("Digite o novo ENDERECO: ");
+                String endereco = sc.nextLine().toUpperCase();
+                bd.alterarEndereco(posicaofinal, endereco);
+            }
+            if (opcao == 3) {
+                System.out.println("Digite o novo TELEFONE: ");
+                int telefone = sc.nextInt();
+                sc.nextLine();
+                bd.alterarTelefone(posicaofinal, telefone);
+            }
+
+            if (opcao == 4) {
+                break;
+            }
+        } while (true);
+    }
+
+    //Remover contatos
+    private static void removerContato(){
+        System.out.println("-----------------------");
+        System.out.println("\nQual Contato voce deseja remover? \nDigite o numero [x]");
+        int posicaofinal = coletarOpcaoMenu();
+        bd.removerContato(posicaofinal);
+        System.out.println("[OK] Contato Removido.");
+    }
 
 }
 
