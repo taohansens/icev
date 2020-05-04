@@ -9,8 +9,52 @@ public class Familia {
         membros.add(p);
     }
 
-    public void getPessoasFamilia() {
+    protected int getPessoasFamilia() {
+        int qtd=0;
         for (Pessoa pp : membros) {
+            qtd++;
+           }
+        return qtd;
+    }
+
+    protected int getQtdTrabalhadores() {
+        int qtd=0;
+        for (Pessoa pp: membros) {
+            if (pp instanceof Trabalhador)
+                qtd++;
+        }
+        return qtd;
+    }
+
+    protected int getQtdTrabAss() {
+        int qtd=0;
+        for (Pessoa pp: membros) {
+            if (pp instanceof TrabAssalariado)
+                qtd++;
+        }
+        return qtd;
+    }
+
+    protected int getQtdTrabHor() {
+        int qtd=0;
+        for (Pessoa pp: membros) {
+            if (pp instanceof TrabHorista)
+                qtd++;
+        }
+        return qtd;
+    }
+
+    protected int getQtdTrabAuto() {
+        int qtd=0;
+        for (Pessoa pp: membros) {
+            if (pp instanceof TrabAutonomo)
+                qtd++;
+        }
+        return qtd;
+    }
+
+    protected void todosMembros(){
+        for (Pessoa pp:membros){
             System.out.println(pp.getNome());
         }
     }

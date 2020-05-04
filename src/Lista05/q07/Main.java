@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		do {
 			System.out.println("#####SENSO IBGX######");
-			System.out.println("###1. Adicionar Familia");
-			System.out.println("###2. Listar");
+			System.out.println(":.1. Adicionar Familia");
+			System.out.println(":.2. Listar");
 			System.out.println("=======================");
 			System.out.print("Escolha uma opcao: ");
 			int opcao = sc.nextInt();
@@ -19,15 +19,8 @@ public class Main {
 				addFamilia();
 				break;
 			case 2:
-				 for (Familia ff : censo) {
-					 System.out.println("Pessoas da Familia:");
-					 ff.getPessoasFamilia();
-				 }
-				
-				System.out.println("LISTANDO TODAS FAMILIAS...\n");
-				 for (Familia ff : censo) {
-					 System.out.println(ff);
-				 }
+				listCenso();
+				break;
 			}
 		} while (true);
 	}
@@ -73,5 +66,44 @@ public class Main {
 			return new Pessoa(novoNome);
 		}
 		return new Pessoa(novoNome);
+	}
+
+	//Metodo para consultas
+	private static void listCenso(){
+		int membros = qtdTotalMembros();
+		int trabalham = qtdTrabalhadores();
+
+		System.out.println("--------- CENSO ------------");
+		System.out.println("=================================");
+		System.out.println("TOTAL DE FAMILIAS: "+ censo.size());
+		System.out.println("QUANTIDADE TOTAL DE MEMBROS: "+ membros);
+		System.out.println("=================================");
+		System.out.println("PESSOAS QUE NÃO TRABALHAM: "+ (membros-trabalham));
+		//System.out.println("PESSOAS QUE TRABALHAM: "+ trabalham);
+		//System.out.println("=================================");
+		//System.out.println("QTD DE TRAB. ASSALARIADOS: "+ censo.size());
+		//System.out.println("QTD DE TRAB. HORISTAS: "+ censo.size());
+		//System.out.println("QTD DE TRAB. AUTONOMOS: "+ censo.size());
+		//System.out.println("=================================\n");
+		System.out.println("Voltando ao menu...\n");
+	}
+
+
+	private static int qtdTotalMembros(){
+		int total=0;
+		for (Familia ff : censo) {
+			total = ff.getPessoasFamilia();
+			total++;
+		}
+		return total;
+	}
+
+	private static int qtdTrabalhadores(){
+		int total=0;
+		for (Familia ff : censo) {
+			total = ff.getQtdTrabalhadores();
+			total++;
+		}
+		return total;
 	}
 }
