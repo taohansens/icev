@@ -1,4 +1,4 @@
-package Lista05.q05;
+package Lista05.q05andq06;
 
 public abstract class Trabalhador {
 
