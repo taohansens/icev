@@ -25,11 +25,8 @@ public abstract class Trabalhador {
 
 	@Override
 	public String toString() {
-		return "Trabalhador{" +
-				"Valor hora=" + getVhora() +
-				", nome='" + getNome() + '\'' +
-				", salario=" + getSalario() +
-				'}';
+		return "Nome: " + getNome() + '\n' +
+		"Salario: R$" + getSalario();
 	}
 }
 
@@ -41,10 +38,21 @@ class TrabalhadorPorHora extends Trabalhador {
 			this.salario = horas * vhora;
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Tipo: Trabalhador por Hora \n" + super.toString() +"\n"+
+				"Valor por hora: " + getVhora();
+	}
 }
 
 class TrabalhadorAssalariado extends Trabalhador {
 	void calcularPagamento(int horas) {
 		this.salario = 40 * vhora;
+	}
+
+	@Override
+	public String toString() {
+		return "Tipo: Trabalhador Assalariado \n" + super.toString();
 	}
 }

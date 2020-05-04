@@ -30,9 +30,9 @@ public class Main {
 		 * SySout
 		 */
 		System.out.println("SALARIOS: ");
-		System.out.println(trabalhador1);
-		//mostraTrab(trabalhador2);
-		//mostraTrab(trabalhador3);
+		System.out.println(trabalhador1+"\n");
+		System.out.println(trabalhador2+"\n");
+		System.out.println(trabalhador3);
 
 	}
 
