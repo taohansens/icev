@@ -70,15 +70,19 @@ public class Main {
 
 	//Metodo para consultas
 	private static void listCenso(){
-		int membros = qtdTotalMembros();
-		int trabalham = qtdTrabalhadores();
-
 		System.out.println("--------- CENSO ------------");
 		System.out.println("=================================");
 		System.out.println("TOTAL DE FAMILIAS: "+ censo.size());
-		System.out.println("QUANTIDADE TOTAL DE MEMBROS: "+ membros);
+		//PROBLEMA AQUI//
+		int total=0;
+		for (Familia g : censo) {
+			total = g.getPessoasFamilia();
+			total++;
+		}
+		// RETORNANDO +1
+		System.out.println("QUANTIDADE TOTAL DE MEMBROS: "+ total);
 		System.out.println("=================================");
-		System.out.println("PESSOAS QUE NÃO TRABALHAM: "+ (membros-trabalham));
+		//System.out.println("PESSOAS QUE NÃO TRABALHAM: "+ (qtdTotalMembros()-qtdTrabalhadores()));
 		//System.out.println("PESSOAS QUE TRABALHAM: "+ trabalham);
 		//System.out.println("=================================");
 		//System.out.println("QTD DE TRAB. ASSALARIADOS: "+ censo.size());
@@ -91,8 +95,8 @@ public class Main {
 
 	private static int qtdTotalMembros(){
 		int total=0;
-		for (Familia ff : censo) {
-			total = ff.getPessoasFamilia();
+		for (Familia f : censo) {
+			total = f.getPessoasFamilia();
 			total++;
 		}
 		return total;

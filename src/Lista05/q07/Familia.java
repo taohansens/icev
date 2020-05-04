@@ -11,9 +11,11 @@ public class Familia {
 
     protected int getPessoasFamilia() {
         int qtd=0;
-        for (Pessoa pp : membros) {
-            qtd++;
-           }
+        for (Pessoa pp: membros) {
+            if (pp != null) {
+                qtd++;
+            }
+        }
         return qtd;
     }
 
