@@ -30,13 +30,14 @@ public class Main {
 		 * SySout
 		 */
 		System.out.println("SALARIOS: ");
-		mostraTrab(trabalhador1);
-		mostraTrab(trabalhador2);
-		mostraTrab(trabalhador3);
+		System.out.println(trabalhador1);
+		//mostraTrab(trabalhador2);
+		//mostraTrab(trabalhador3);
 
 	}
 
-	public static void mostraTrab(Trabalhador t) {
-		System.out.println("\nNOME: " + t.getNome() + "\nSAL: " + t.getSalario());
-	}
+//	public static void mostraTrab(Trabalhador t) {
+		//System.out.println("\nNOME: " + t.getNome() + "\nSAL: " + t.getSalario());
+//		System.out.println();
+//	}
 }

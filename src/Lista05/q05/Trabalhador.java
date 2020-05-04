@@ -1,7 +1,7 @@
 package Lista05.q05;
 
 public abstract class Trabalhador {
-	
+
 	protected double vhora = 20; // R$ por Hora.
 	
 	protected String nome;
@@ -15,10 +15,22 @@ public abstract class Trabalhador {
 		return nome;
 	}
 	
-	public double getSalario() {
+	protected double getSalario() {
 		return salario;
 	}
-	
+
+	protected double getVhora() {
+		return vhora;
+	}
+
+	@Override
+	public String toString() {
+		return "Trabalhador{" +
+				"Valor hora=" + getVhora() +
+				", nome='" + getNome() + '\'' +
+				", salario=" + getSalario() +
+				'}';
+	}
 }
 
 class TrabalhadorPorHora extends Trabalhador {
