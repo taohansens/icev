@@ -1,31 +1,28 @@
 package Lista05.q07;
 
 abstract class Trabalhador extends Pessoa {
-	String emprego;
 
+    public Trabalhador(String nome) {
+        super(nome);
+    }
 
-	public Trabalhador(String nome, String emprego) {
-		super(nome);
-		this.emprego = emprego;
-	}
-	
 }
 
 class TrabAssalariado extends Trabalhador {
 
-	public TrabAssalariado(String nome, String emprego) {
-		super(nome,emprego);
-	}
+    public TrabAssalariado(String nome) {
+        super(nome);
+    }
 }
 
 class TrabHorista extends Trabalhador {
-	public TrabHorista(String nome, String emprego) {
-		super(nome, emprego);
-	}
+    public TrabHorista(String nome) {
+        super(nome);
+    }
 }
 
 class TrabAutonomo extends Trabalhador {
-	public TrabAutonomo(String nome, String emprego) {
-		super(nome, emprego);
-	}
+    public TrabAutonomo(String nome) {
+        super(nome);
+    }
 }

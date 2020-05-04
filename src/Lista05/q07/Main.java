@@ -4,25 +4,19 @@ import java.util.*;
 
 public class Main {
 	static Scanner sc = new Scanner(System.in);
-	static List<Familia> censo = new ArrayList<Familia>();
+	static List<Familia> censo = new ArrayList<>();
 
 	public static void main(String[] args) {
 		do {
 			System.out.println("#####SENSO IBGX######");
 			System.out.println("###1. Adicionar Familia");
 			System.out.println("###2. Listar");
+			System.out.println("=======================");
+			System.out.print("Escolha uma opcao: ");
 			int opcao = sc.nextInt();
 			switch (opcao) {
 			case 1:
-				System.out.println("Digite o numero de pessoas da familia: ");
-				int qtdPessoas = sc.nextInt();
-				Familia f = new Familia();
-				for (int i=0; i<qtdPessoas; i++) {
-					Pessoa novaPessoa = criarPessoa();
-					f.adicionaPessoa(novaPessoa);
-				}
-				censo.add(f);
-				Familia.cont++;
+				addFamilia();
 				break;
 			case 2:
 				 for (Familia ff : censo) {
@@ -38,26 +32,41 @@ public class Main {
 		} while (true);
 	}
 
+	//Metodo para adicionar o obj familia Ã  lista de familias
+	private static void addFamilia() {
+		System.out.println("-----ADICIONAR FAMILIA-----");
+		System.out.print("Digite o numero de pessoas da familia: ");
+		int qtdPessoas = sc.nextInt();
+		Familia f = new Familia();
+		for (int i=0; i<qtdPessoas; i++) {
+			System.out.print("MEMBRO ["+(i+1)+"/"+qtdPessoas+"] ");
+			Pessoa novaPessoa = criarPessoa();
+			f.adicionaPessoa(novaPessoa);
+			System.out.print("Membro adicionado [OK]");
+		}
+		censo.add(f);
+		System.out.println("\nFamilia Adicionada [OK]");
+		System.out.println("Retornando ao menu principal...\n");
+	}
+
+	// Metodo para criar pessoa da familia
 	private static Pessoa criarPessoa() {
 		sc.nextLine();
 		System.out.print("Digite o nome: ");
 		String novoNome = sc.nextLine();
-		System.out.println("Trabalha? \n1-Sim 0-Não");
+		System.out.println("Trabalha? \n1-Sim 0-Nao");
 		int trabalha = sc.nextInt();
 		if (trabalha == 1) {
-			System.out.print("Digite o emprego: ");
-			sc.nextLine();
-			String novoEmprego = sc.nextLine().toUpperCase();
-			System.out.print("Digite o tipo de Emprego: \n" + "1- Assalariado\n" + "2- Horista\n" + "3- Autonomo");
+			System.out.println("Tipo de emprego: \n" + "1- Assalariado\n" + "2- Horista\n" + "3- Autonomo");
 			System.out.print("Escolha uma opcao:");
 			int tipoEmprego = sc.nextInt();
 			switch (tipoEmprego) {
 			case 1:
-				return new TrabAssalariado(novoNome, novoEmprego);
+				return new TrabAssalariado(novoNome);
 			case 2:
-				return new TrabHorista(novoNome, novoEmprego);
+				return new TrabHorista(novoNome);
 			case 3:
-				return new TrabAutonomo(novoNome, novoEmprego);
+				return new TrabAutonomo(novoNome);
 
 			}
 		} else {
