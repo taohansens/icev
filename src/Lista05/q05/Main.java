@@ -35,9 +35,4 @@ public class Main {
 		System.out.println(trabalhador3);
 
 	}
-
-//	public static void mostraTrab(Trabalhador t) {
-		//System.out.println("\nNOME: " + t.getNome() + "\nSAL: " + t.getSalario());
-//		System.out.println();
-//	}
 }
