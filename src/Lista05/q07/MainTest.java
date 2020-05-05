@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestTemplate;
 
 import static junit.framework.Assert.assertEquals;
-import static Lista05.q07.Main.censo;
 
 class MainTest {
 
@@ -70,10 +69,6 @@ class MainTest {
         g.adicionaPessoa(ee);
         g.adicionaPessoa(gg);
         g.adicionaPessoa(hh);
-
-        censo.add(e);
-        censo.add(f);
-        censo.add(g);
 
         assertEquals(4,g.getPessoasFamilia());
 

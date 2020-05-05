@@ -4,13 +4,13 @@ import java.util.*;
 
 public class Main {
 	static Scanner sc = new Scanner(System.in);
-	static List<Familia> censo = new ArrayList<>();
+	private static List<Familia> censo = new ArrayList<>();
 
 	public static void main(String[] args) {
 		do {
-			System.out.println("#####SENSO IBGX######");
-			System.out.println("###1. Adicionar Familia");
-			System.out.println("###2. Listar");
+			System.out.println("\n#####SENSO IBGX######");
+			System.out.println(":.1. Adicionar Familia");
+			System.out.println(":.2. Listar");
 			System.out.println("=======================");
 			System.out.print("Escolha uma opcao: ");
 			int opcao = sc.nextInt();
@@ -35,10 +35,10 @@ public class Main {
 			System.out.print("MEMBRO ["+(i+1)+"/"+qtdPessoas+"] ");
 			Pessoa novaPessoa = criarPessoa();
 			f.adicionaPessoa(novaPessoa);
-			System.out.print("Membro adicionado [OK]");
+			System.out.println("Membro adicionado [OK]\n");
 		}
 		censo.add(f);
-		System.out.println("\nFamilia Adicionada [OK]");
+		System.out.println("Familia Adicionada [OK]");
 		System.out.println("Retornando ao menu principal...\n");
 	}
 
@@ -71,25 +71,56 @@ public class Main {
 	//Metodo para consultas
 	private static void listCenso(){
 		System.out.println("--------- CENSO ------------");
-		System.out.println("\n=================================");
+		System.out.println("=================================");
 		System.out.println("TOTAL DE FAMILIAS: "+ censo.size());
 		System.out.println("QUANTIDADE TOTAL DE MEMBROS: " +qtdTotalMembros());
-		System.out.println("\n=================================\n");
-		//System.out.println("PESSOAS QUE NÃO TRABALHAM: "+ censo.size());
-		//System.out.println("PESSOAS QUE TRABALHAM: "+ censo.size());
-		System.out.println("\n=================================\n");
-		//System.out.println("QTD DE TRAB. ASSALARIADOS: "+ censo.size());
-		//System.out.println("QTD DE TRAB. HORISTAS: "+ censo.size());
-		//System.out.println("QTD DE TRAB. AUTONOMOS: "+ censo.size());
 		System.out.println("=================================");
+		System.out.println("PESSOAS QUE NÃO TRABALHAM: "+ (qtdTotalMembros()-qtdTrabalhadores()));
+		System.out.println("PESSOAS QUE TRABALHAM: "+ qtdTrabalhadores());
+		System.out.println("=================================");
+		System.out.println("QTD DE TRAB. ASSALARIADOS: "+ QtdTrabAss());
+		System.out.println("QTD DE TRAB. HORISTAS: "+ QtdTrabHor());
+		System.out.println("QTD DE TRAB. AUTONOMOS: "+ QtdTrabAuto());
+		System.out.println("=================================\n");
+		System.out.println("Retornando ao menu principal... \n");
 	}
-
 
 	private static int qtdTotalMembros(){
 		int total=0;
 		for (Familia ff : censo) {
-			ff.getPessoasFamilia();
 			total += ff.getPessoasFamilia();
+		}
+		return total;
+	}
+
+	private static int qtdTrabalhadores(){
+		int total=0;
+		for (Familia ff : censo) {
+			total += ff.getQtdTrabalhadores();
+		}
+		return total;
+	}
+
+	private static int QtdTrabAss(){
+		int total=0;
+		for (Familia ff : censo) {
+			total += ff.getQtdTrabAss();
+		}
+		return total;
+	}
+
+	private static int QtdTrabHor(){
+		int total=0;
+		for (Familia ff : censo) {
+			total += ff.getQtdTrabHor();
+		}
+		return total;
+	}
+
+	private static int QtdTrabAuto(){
+		int total=0;
+		for (Familia ff : censo) {
+			total += ff.getQtdTrabAuto();
 		}
 		return total;
 	}
