@@ -1,13 +1,13 @@
 package Lista05.q07;
 
 public class Pessoa {
-    String nome;
+    private final String nome;
 
-    public Pessoa(String nome) {
+    protected Pessoa(String nome) {
         this.nome = nome;
     }
 
-    public String getNome() {
+    protected String getNome() {
         return nome;
     }
 
