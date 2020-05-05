@@ -3,20 +3,14 @@ package Lista05.q07;
 import java.util.*;
 
 public class Familia {
-    List<Pessoa> membros = new ArrayList<>();
+    private List<Pessoa> membros = new ArrayList<>();
 
-    public void adicionaPessoa(Pessoa p) {
+    protected void adicionaPessoa(Pessoa p) {
         membros.add(p);
     }
 
     protected int getPessoasFamilia() {
-        int qtd=0;
-        for (Pessoa pp: membros) {
-            if (pp != null) {
-                qtd++;
-            }
-        }
-        return qtd;
+        return membros.size();
     }
 
     protected int getQtdTrabalhadores() {
