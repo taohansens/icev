@@ -7,7 +7,7 @@ Para cada pergunta que contenha variáveis quantitativas (numéricas), calcule,
 intérprete e compare os resultados da média, mediana, moda e desvio padrão.
 Utilize a criatividade para apresentar os valores calculados.
 '''
-
+import matplotlib as mp
 import pandas as pd
 
 wine = pd.read_csv("wineDataSet.csv", skiprows=0, header=None)
@@ -28,7 +28,10 @@ print("\n### Valor Mínimo ###")
 print(wine.min(axis=0))
 print("\n### Variância ###")
 print(wine.var(axis=0))
-print("\n### Variância ###")
-print(wine.var(axis=0))
-print("\n### QUARTIL 1 ###")
-print(wine.quantile(.1, axis = 0))
+
+print("\n### QUARTIS ###")
+df = pd.DataFrame(wine)
+pd.set_option('display.max_columns', 14)
+
+print(df.quantile([.25,.5,.75],axis=0))
+
