@@ -1,6 +1,6 @@
 import requests
 download_url = "http://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data"
-arquivoDt = "wineDataSet.csv"
+arquivoDt = "DataSet.csv"
 
 response = requests.get(download_url)
 response.raise_for_status()

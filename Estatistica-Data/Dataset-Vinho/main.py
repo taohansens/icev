@@ -1,15 +1,6 @@
-'''
-Para variáveis quantitativas apresentar:
-média, mediana, desvio padrão, valor máximo, valor mínimo, variância, quartil.
-
-Para variáveis categóricas apresentar a frequência absoluta, relativa e moda.
-Para cada pergunta que contenha variáveis quantitativas (numéricas), calcule,
-intérprete e compare os resultados da média, mediana, moda e desvio padrão.
-Utilize a criatividade para apresentar os valores calculados.
-'''
+import download_dataset
 import pandas as pd
-
-wine = pd.read_csv("wineDataSet.csv", skiprows=0, header=None)
+wine = pd.read_csv("DataSet.csv", skiprows=0, header=None)
 
 wine.columns = ['classOfWine', 'alcohol', 'malicAcid', 'ash', 'ashalcalinity'
     , 'magnesium', 'totalPhenols', 'flavanoids', 'nonFlavanoidPhenols', 'proanthocyanins'
@@ -30,7 +21,7 @@ print(wine.var(axis=0))
 
 print("\n### QUARTIS ###")
 df = pd.DataFrame(wine)
-pd.set_option('display.max_columns', 14)
+pd.set_option('display.max_columns', 500)
 
 print(df.quantile([.25,.5,.75],axis=0))
 
