@@ -7,7 +7,6 @@ Para cada pergunta que contenha variáveis quantitativas (numéricas), calcule,
 intérprete e compare os resultados da média, mediana, moda e desvio padrão.
 Utilize a criatividade para apresentar os valores calculados.
 '''
-import matplotlib as mp
 import pandas as pd
 
 wine = pd.read_csv("wineDataSet.csv", skiprows=0, header=None)
