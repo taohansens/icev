@@ -16,6 +16,9 @@ wine.columns = ['class', 'alcohol', 'malicAcid', 'ash', 'ashalcalinity'
     , 'magnesium', 'totalPhenols', 'flavanoids', 'nonFlavanoidPhenols', 'proanthocyanins'
     , 'colorIntensity', 'hue', 'od280_od315', 'proline']
 
-#print(pd.read_csv('wineDataSet.csv'))
-print(wine['alcohol'].mean())
-print(wine['malicAcid'].mean())
+
+print("### Média ###")
+print(wine.mean(axis=0))
+
+#print(wine['alcohol'].mean())
+#print(wine['malicAcid'].mean())
