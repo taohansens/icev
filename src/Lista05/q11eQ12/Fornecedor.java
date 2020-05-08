@@ -19,4 +19,12 @@ public class Fornecedor extends Pessoa {
     protected void setValorDivida(double valorDivida) {
         this.valorDivida = valorDivida;
     }
+
+
+    protected double obterSaldo(){
+        return getValorCredito()-getValorDivida();
+    }
+
+
+
 }
