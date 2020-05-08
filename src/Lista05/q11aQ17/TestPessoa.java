@@ -1,4 +1,4 @@
-package Lista05.q11eQ12;
+package Lista05.q11aQ17;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

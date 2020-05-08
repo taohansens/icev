@@ -1,4 +1,4 @@
-package Lista05.q11eQ12;
+package Lista05.q11aQ17;
 
 public class Pessoa {
     private String nome;
