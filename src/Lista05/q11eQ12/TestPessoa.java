@@ -29,4 +29,16 @@ class TestPessoa {
         assertEquals("rua do farol", p1.getEndereco());
         assertEquals("99999", p1.getTelefone());
     }
+
+    @Test
+    void TestaSalarioAdministrador() {
+        Administrador p3 = new Administrador();
+
+        p3.setNome("Alvaro");
+        p3.setImposto(10);
+        p3.setAjudaDeCusto(400);
+        p3.setSalarioBase(400);
+
+        assertEquals(720, p3.calcularSalario());
+    }
 }
