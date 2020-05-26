@@ -9,21 +9,19 @@ public class Main {
 	static Scanner sc = new Scanner(System.in);
 	static BaseDeDados bd = new BaseDeDados();
 
-	static Gui exibe = new Gui();
-
 	public static void main(String[] args) {
 
 		do {
-			exibe.menuPrincipal();
+			Gui.menuPrincipal();
 			int opcao = selecionaMenu();
 			switch (opcao) {
 
-			case 1: // adicionar
+			case 1:
 				Tarefa novaTarefa = criarTarefa();
 				bd.adicionar(novaTarefa);
 				break;
 
-			case 2: // listar todas as tarefas
+			case 2:
 				listaTarefa();
 				break;
 
@@ -36,7 +34,6 @@ public class Main {
 				System.out.println("\nVoce deve escolher uma das opcoes para remover");
 				opcao = selecionaMenu();
 				bd.remover(opcao);
-
 				break;
 
 			case 0:
@@ -61,7 +58,7 @@ public class Main {
 
 	private static void listaTarefa() {
 		do {
-			exibe.menuTarefas();
+			Gui.menuTarefas();
 			int opcao = selecionaMenu();
 			if (opcao == 1) {
 				System.out.println("====== TODAS AS TAREFAS ====");
@@ -118,19 +115,37 @@ public class Main {
 		break; 
 		} while (true);
 	}
-		
-	/*
-	 * CRIAR TOdo
-	 */
 
 	private static Tarefa criarTarefa() {
-		System.out.print("Digite o nome da tarefa: ");
-		String descricao = sc.nextLine();
-		System.out.print("Digite a data prevista p/ enc. tarefa (dd/mm/aaaa): ");
-		String dadosData = sc.nextLine();
-		int[] dadosConvertidos = processaDadosData(dadosData);// @TODO ajustar mês. 
-		GregorianCalendar data = new GregorianCalendar(dadosConvertidos[2], dadosConvertidos[1]-1, dadosConvertidos[0]); 
-		//Possível BUG >>> Mês + 1 (?);
+		String descricao = "";
+		String dadosData = "";
+		boolean deuErro;
+		boolean deuErro2;
+		do{
+			deuErro=false;
+			try{
+				System.out.print("Digite o nome da tarefa: ");
+				descricao = sc.nextLine();
+				if(!descricao.matches("[a-zA-Z]{3,}")){
+          		throw new Exception("\nO nome deve ter ao menos 3 letras.");}}
+				catch(Exception e){
+					System.err.println("\nNÃ£o Ã© permitido numeros no nome" + e.getMessage());
+					deuErro = true;}
+			}while(deuErro);
+		do{
+			deuErro2=false;
+			try{
+				System.out.print("Digite a data prevista p/ enc. tarefa (dd/mm/aaaa): ");
+				dadosData = sc.nextLine();
+				if(!(dadosData.matches("\\d{2}/\\d{2}/\\d{4}")))
+				throw new Exception("\nA data deve ser no formato dd/mm/yyyy.");}
+		catch(Exception e){
+			System.err.println(e.getMessage());
+			deuErro2 = true;}
+	}while(deuErro2);
+
+		int[] dadosConvertidos = processaDadosData(dadosData);
+		GregorianCalendar data = new GregorianCalendar(dadosConvertidos[2], dadosConvertidos[1]-1, dadosConvertidos[0]);
 
 		return new Tarefa(descricao, data);
 	}
@@ -165,8 +180,16 @@ public class Main {
 	 * Menu Selection
 	 */
 	private static int selecionaMenu() {
-		System.out.print("Digite a sua opcao: ");
-		return Integer.valueOf(sc.nextLine());
+		int valor=0;
+		boolean erro = false;
+		while(!erro){
+		try{
+			System.out.println("Digite a sua opcao: ");
+			valor = Integer.valueOf(sc.nextLine());
+			erro = true;
+		}catch(NumberFormatException e) {
+			System.err.print("ERRO - Digite um valor valido.\n"); }}
+		return valor;
 	}
 
 }

@@ -2,7 +2,7 @@ package Lista04.q02;
 
 public class Gui {
 	
-	public void menuPrincipal() {
+	public static void menuPrincipal() {
 		System.out.println("\n::: Tarefas ToDo :::");
 		System.out.println(":::- Menu -:::");
 		System.out.println(":1: Adicionar ToDo : ");
@@ -12,7 +12,7 @@ public class Gui {
 		System.out.println(":0: Sair do programa :");
 	}
 	
-	public void menuTarefas() {
+	public static void menuTarefas() {
 		System.out.println("\n## Listar Tarefas ##");
 		System.out.println(":1: Listar TODAS :");
 		System.out.println(":2: Listar apenas PENDENTES :");
