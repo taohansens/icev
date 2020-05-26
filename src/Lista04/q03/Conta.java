@@ -3,7 +3,7 @@ package Lista04.q03;
 public class Conta {
 	String titular;
 	String agencia;
-	int numero;
+	String numero;
 	double saldo;
 	String dataDeAbertura;
 
@@ -13,7 +13,7 @@ public class Conta {
 	 * @param numero
 	 * @param dataDeAbertura
 	 */
-	public Conta(String titular, String agencia, int numero, String dataDeAbertura) {
+	public Conta(String titular, String agencia, String numero, String dataDeAbertura) {
 		this.titular = titular;
 		this.agencia = agencia;
 		this.numero = numero;
@@ -26,7 +26,7 @@ public class Conta {
 	 * @param agencia
 	 * @param numero
 	 */
-	public Conta(String agencia, int numero, String titular) {
+	public Conta(String agencia, String numero, String titular) {
 		this.titular = titular;
 		this.agencia = agencia;
 		this.numero = numero;
@@ -65,14 +65,14 @@ public class Conta {
 	/**
 	 * @return the numero
 	 */
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
 	/**
 	 * @param numero the numero to set
 	 */
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
